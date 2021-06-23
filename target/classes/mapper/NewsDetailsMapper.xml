@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sep.dao.NewsDetailsDao">
+    <insert id="addOneNews">
+        insert into newsdetail values (null,#{title},#{content},#{author},#{time},#{type})
+    </insert>
+    <update id="updateOneNews">
+        update newsdetail set
+         title=#{title},content=#{content},author=#{author},
+         time=#{time},type=#{type} where id=#{id}
+    </update>
+    <delete id="deleteOneNews">
+        delete from newsdetail where id=#{id}
+    </delete>
+
+    <select id="selectAllNews" resultType="com.sep.pojo.NewsDetails">
+        select * from newsdetail
+    </select>
+    <select id="selectOneById" resultType="com.sep.pojo.NewsDetails">
+        select * from newsdetail where id=#{id}
+    </select>
+    <select id="selectByAuthor" resultType="com.sep.pojo.NewsDetails">
+        select * from newsdetail where author=#{author}
+    </select>
+<!--    <select id="selectContent" resultType="com.sep.pojo.NewsDetails">-->
+<!--        select * from newsdetail where title like "%"#{title}"%"-->
+<!--    </select>-->
+    <select id="selectContent" resultType="com.sep.pojo.NewsDetails">
+        select * from newsdetail where title like concat ('%',#{title},'%')
+    </select>
+    <select id="selectOneByTitle" resultType="com.sep.pojo.NewsDetails">
+        select * from newsdetail where title=#{title}
+    </select>
+</mapper>

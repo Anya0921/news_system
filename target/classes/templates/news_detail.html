@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>新闻平台</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="../static/css/zerogrid.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/responsiveslides.css" />
+	<link rel="stylesheet" href="../static/css/responsive.css">
+	<link rel="stylesheet" href="../static/css/detail.css">
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+	<script src="../static/js/html5.js"></script>
+	<script src="../static/js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<link href='../static/images/favicon.ico' rel='icon' type='image/x-icon'/>
+	
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/responsiveslides.js"></script>
+	<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+        auto: true,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 960,
+        namespace: "centered-btns"
+      });
+    });
+  </script>
+    
+</head>
+<body style="background: azure;">
+<!--------------Header--------------->
+<header> 
+	<div class="zerogrid">
+		<div class="row">
+			<div class="col05">
+				<div id="logo"><a href=""><img src="../static/images/logo.png"/></a></div>
+			</div>
+			<div class="col06 offset05">
+			   <div id='search-box'>
+				   <form action='/index/search' id='search-form' method='get' target='_top'>
+					   <input name='title' placeholder='type here' type='text'/>
+					   <button id='search-button' type='submit'><span>Search</span></button>
+				   </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!--------------Navigation--------------->
+
+<nav>
+	<ul>
+		<li><a href="/">首页</a></li>
+		<li><a href="/">热门新闻</a></li>
+		<li><a href="/">最新发布</a></li>
+		<li><a href="/">要闻</a></li>
+		<li><a href="/">关于我们</a></li>
+		<li style="float:right" ><a href="../static/page/newslogin.html">管理员入口</a></li>
+	</ul>
+</nav>
+
+<div class="contents">
+	<div class="contents-left">
+		<section>
+			<div class="contents-left-one">
+				<p class="contents-left-title" th:text="${news.getTitle()}"></p>
+				<p class="contents-left-time">北京时间：<span th:text="${news.getTime()}"></span></p>
+			</div>
+			<div>
+				<div class="contents-left-two"><img src="../static/images/1.jpg"/></div>
+				<p class="content-p" th:text="${news.getContent()}"></p>
+			</div>
+		</section>
+	</div>
+		<div class="sidebar col05" style="position: absolute;right: 0;top: 320px;">
+			<section>
+				<div class="heading">最新发布</div>
+				<div class="content">
+					<ul class="list">
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615002323&site=nbatop&column=">11分准三双守强攻弱 偏科西蒙斯难称巨头</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614005102&site=nbatop&column=">超凡表现征服对手 保罗引掘金将帅齐声夸赞</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615001996&site=nbatop&column=">杨25+18恩比德下半场仅4分 老鹰险胜76人</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614001958&site=nbatop&column=">战斗中成长 34分11板布克延续太阳风暴</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614000717&site=&column=">字母哥34+12欧文伤退 雄鹿主场胜篮网</a></li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<div class="heading">要闻</div>
+				<div class="content">
+					<ul class="list">
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002685&site=nbatop&column=">最佳阵容名单：字母哥全票入选一阵</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002304&site=nbatop&column=">约基奇恩师德扬-米洛杰维奇将担任勇士助教</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002226&site=nbatop&column=">哈登天王山出战概率提升 赛前决定是否复出</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615003204&site=nbatop&column=">恩比德：今晚状态不好 膝盖痊愈要等休赛期</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615002866&site=nbatop&column=">7连20+稳定输出 末节成看客托哈需要机会</a></li>
+					</ul>
+				</div>
+			</section>
+			<section>
+				<div class="heading">关于我们</div>
+				<div class="content">
+					软件工程18班 <a href="/">about us</a>
+					<p>CB18130803 林敬杰</p>
+					<p>CB18130849 林树灏</p>
+					<p>CB18130808 周祖杰</p>
+				</div>
+			</section>
+			</div>
+</div>
+	
+</body>
+</html>

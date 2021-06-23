@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台管理</title>
+<!--    <link rel="stylesheet" type="text/css" href="/css/common.css"/>-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}"/>
+<!--    <link rel="stylesheet" type="text/css" href="/css/main.css"/>-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <style>
+        .w{width: 5%;}
+    </style>
+</head>
+<body onLoad="goPage(1,11);">
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="#" target="_blank">首页</a></li>
+<!--                <li><a href="../index.html">新闻首页</a></li>-->
+                <li><a th:href="@{/}">新闻首页</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#">管理员:</a></li>
+                <li><a href="#">修改密码</a></li>
+<!--                <li><a href="/page/newslogin.html">退出</a></li>-->
+                <li><a th:href="@{/page/newslogin.html}">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1 style="margin-left: 18px;">菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <ul class="sub-menu">
+<!--                        <li><a href="design.html">查询新闻</a></li>-->
+                        <li><a th:href="@{/admin/select}">查询新闻</a></li>
+                        <li><a th:href="@{/admin/insert}">增加新闻</a></li>
+<!--                        <li><a th:href="@{/admin/update}">修改新闻</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+<!--            <div class="crumb-list"><i class="icon-font"></i><a href="../index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">查询新闻</span></div>-->
+            <div class="crumb-list"><i class="icon-font"></i><a th:href="@{/admin/select}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">查询新闻</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/select">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="100">关键字查询:</th>
+                            <td><input class="common-text" placeholder="关键字" name="keywords" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+                <div class="result-content">
+                    <table class="result-tab" width="100%" id="idData" style="text-align: center">
+                        <thead>
+                        <tr>
+                            <th class="w" style="width: 4pc;text-align: center">编号</th>
+                            <th class="w" style="width: 28pc;text-align: center">标题</th>
+                            <th class="w" style="width: 6pc;text-align: center">作者</th>
+                            <th class="w" style="width: 18pc;text-align: center">更新时间</th>
+                            <th class="w" style="width: 6pc;text-align: center">类型</th>
+                            <th class="w" style="width: 18pc;text-align: center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr  style="width: 100%" th:each="n:${news}">
+                            <td class="w" style="width: 4pc;"  th:text="${n.getId()}"></td>
+                            <td class="w" style="width: 28pc;" th:text="${n.getTitle()}"></td>
+                            <td class="w" style="width: 6pc;" th:text="${n.getAuthor()}"></td>
+                            <td class="w" style="width: 18pc;" th:text="${n.getTime()}"></td>
+                            <td class="w" style="width: 6pc;" th:text="${n.getType()}"></td>
+                            <td class="w" style="width: 18pc;" >
+<!--                                <a class="link-update" href="#">修改</a>-->
+                                <a class="btn btn-sm btn-primary" th:href="@{/update/}+${n.getId()}">编辑</a>
+<!--                                <a class="link-del" href="#">删除</a>-->
+                            <a class="btn btn-sm btn-danger" th:href="@{/delete/}+${n.getId()}">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <table align="center" style="margin-top: 10px;margin-bottom: 10px">
+                    <tr><td><div id="barcon" name="barcon"></div></td></tr>
+                </table>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+<script>
+    /**
+      * 分页函数
+      * pno--页数
+      * psize--每页显示记录数
+      * 分页部分是从真实数据行开始，因而存在加减某个常数，以确定真正的记录数
+      * 纯js分页实质是数据行全部加载，通过是否显示属性完成分页功能
+      **/
+    function goPage(pno,psize){
+        var itable = document.getElementById("idData");
+        var num = itable.rows.length;//表格所有行数(所有记录数)
+        console.log(num);
+        var totalPage = 0;//总页数
+        var pageSize = psize;//每页显示行数
+        //总共分几页
+        if(num/pageSize > parseInt(num/pageSize)){
+            totalPage=parseInt(num/pageSize)+1;
+        }else{
+            totalPage=parseInt(num/pageSize);
+        }
+        var currentPage = pno;//当前页数
+        var startRow = (currentPage - 1) * pageSize+1;//开始显示的行 31
+        var endRow = currentPage * pageSize;//结束显示的行  40
+        endRow = (endRow > num)? num : endRow;  //40
+        console.log(endRow);
+        //遍历显示数据实现分页
+        for(var i=1;i<(num+1);i++){
+            var irow = itable.rows[i-1];
+            if(i>=startRow && i<=endRow){
+                irow.style.display = "block";
+            }else{
+                irow.style.display = "none";
+            }
+        }
+        var tempStr = "共"+num+"条记录 分"+totalPage+"页 当前第"+currentPage+"页";
+        if(currentPage>1){
+            tempStr += "<a href=\"#\" onClick=\"goPage("+(1)+","+psize+")\">首页</a>";
+            tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage-1)+","+psize+")\"><上一页</a>"
+        }else{
+            tempStr += "首页";
+            tempStr += "<上一页";
+        }
+        if(currentPage<totalPage){
+            tempStr += "<a href=\"#\" onClick=\"goPage("+(currentPage+1)+","+psize+")\">下一页></a>";
+            tempStr += "<a href=\"#\" onClick=\"goPage("+(totalPage)+","+psize+")\">尾页</a>";
+        }else{
+            tempStr += "下一页>";
+            tempStr += "尾页";
+        }
+        document.getElementById("barcon").innerHTML = tempStr;
+    }
+</script>
+</body>
+</html>

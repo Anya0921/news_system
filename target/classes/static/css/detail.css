@@ -1,0 +1,36 @@
+
+.contents{
+	margin: 0px 10%;font-size: 15px;width: 80%;height:auto;background: #fff;
+}
+
+.contents-left{
+	width: 76%;height:100%;float: left;padding: 50px 0;background: #fff;
+}
+
+.contents-left-one{
+	text-align: center;
+}
+
+.contents-left-title{
+	font-size: 22px;font-weight:bold;
+}
+
+.contents-left-time{
+	margin-top: 5px;font-size: 10px;font-style: italic;font-family: "微软雅黑";
+}
+
+.contents-left-two{
+	margin: 40px 10%;
+}
+
+.contents-left-two img{
+	height: auto;width: max-content;
+}
+
+.content-right{
+	width: 29.25%;height:800px;float: right;border: 4px #003399 solid;
+}
+
+.content-p{
+	text-indent:2em;font-size: 18px;margin-left: 45px;margin-right: 45px;
+}

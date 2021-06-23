@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>新闻平台</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="../static/css/zerogrid.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/responsiveslides.css" />
+	<link rel="stylesheet" href="../static/css/responsive.css">
+
+
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+	<script src="../static/js/html5.js"></script>
+	<script src="../static/js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<link href='../static/images/favicon.ico' rel='icon' type='image/x-icon'/>
+	
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/responsiveslides.js"></script>
+	<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+        auto: true,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 960,
+        namespace: "centered-btns"
+      });
+    });
+
+ </script>
+ 
+	<body class="body_tab">
+				<!--------------Header--------------->
+		<header> 
+			<div class="zerogrid">
+				<div class="row">
+					<div class="col05">
+						<div id="logo"><a href=""><img src="../static/images/logo.png"/></a></div>
+					</div>
+					<div class="col06 offset05">
+					   <div id='search-box'>
+						  <form action='/index/search' id='search-form' method='get' target='_top'>
+							<input name='title' placeholder='type here' type='text'/>
+							<button id='search-button' type='submit'><span>Search</span></button>
+						  </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<!--nav-->
+		<div class="search-tab">
+			<ul>
+				<!--<li style="float: left;"><a href="news_detail.html">首页</a></li>-->
+				<li style="float: left;"><a href="javascript:history.go(-1)"><img src="../static/images/back.png"/></a></li>
+			</ul>
+		</div>
+		<div class="search-Contents" style="float: left;">
+			<ul th:each="n:${news}">
+				<div style="margin: 0 10%;width: 80%;height: 132px;">
+				<ul style="width: 30%;float: left;">
+					<li class="div-img" style="width: 100%;float: left;"><img src="../static/images/1.jpg" style="width: 200px;height: 130px;border-radius:25px;"/></li>
+				</ul>
+				<ul style="width: 70%;float: right">
+					<a th:href="@{/search/}+${n.getId()}"><li th:text="${n.getTitle()}"></li></a>
+					<li style="height: 70px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;"><span th:text="${n.getContent()}"></span></li>
+					<li style="margin-top: 19px;">
+						时间：<span th:text="${n.getTime()}"></span>&nbsp;&nbsp;
+						作者：<span th:text="${n.getAuthor()}"></span>&nbsp;&nbsp;
+						类型：<span th:text="${n.getType()}"></span>
+					</li>
+				</ul>
+				</div>
+				<hr/>
+			</ul>
+
+		</div>
+		<div id="copyright" STYLE="position: fixed ">
+			<p><a>第十三组 林敬杰 林树灏 周祖杰</a></p>
+		</div>
+
+	</body>
+</html>

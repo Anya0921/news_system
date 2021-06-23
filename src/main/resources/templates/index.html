@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>新闻平台</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="../static/css/zerogrid.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/responsiveslides.css" />
+	<link rel="stylesheet" href="../static/css/responsive.css">
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+	<script src="../static/js/html5.js"></script>
+	<script src="../static/js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	<link href='../static/images/favicon.ico' rel='icon' type='image/x-icon'/>
+	
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/responsiveslides.js"></script>
+	<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+        auto: true,
+        pager: true,
+        nav: true,
+        speed: 500,
+        maxwidth: 960,
+        namespace: "centered-btns"
+      });
+    });
+
+	function fn(n,m){
+		$(n).bind('click',function(){
+			$("html,body").animate({ scrollTop: m }, 500);//点击按钮向下移动 m px，时间为800毫秒
+		})
+	}
+
+  </script>
+    
+</head>
+<body>
+<!--------------Header--------------->
+<header> 
+	<div class="zerogrid">
+		<div class="row">
+			<div class="col05">
+				<div id="logo"><a href=""><img src="../static/images/logo.png"/></a></div>
+			</div>
+			<div class="col06 offset05">
+			   <div id='search-box'>
+				  <form action="/index/search" target='_top'>
+					<input  name="title" placeholder="type here" type="text" style="border: 2.74px solid;"/>
+					<button id='search-button' type='submit'><span>Search</span></button>
+				  </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!--------------Navigation--------------->
+
+<nav>
+	<ul>
+		<li><a href="/">首页</a></li>
+		<li onclick="fn('#HotNews',700)"><a id="HotNews">热门新闻</a></li>
+		<li onclick="fn('#LatestNews',1000)"><a id="LatestNews">最新发布</a></li>
+		<li onclick="fn('#FocusNews',1300)"><a id="FocusNews">要闻</a></li>
+		<li onclick="fn('#aboutUs',1500)"><a id="aboutUs">关于我们</a></li>
+		<li style="float:right" ><a href="../static/page/newslogin.html">管理员入口</a></li>
+	</ul>
+</nav>
+
+			
+<!--------------Content--------------->
+<section id="content">
+	<div class="zerogrid">
+		<div class="row block">
+			
+			<div class="featured col16">
+				<div class="rslides_container">
+					<ul class="rslides" id="slider">
+						<li><img src="../static/images/1.jpg"/></li>
+						<li><img src="../static/images/2.jpg"/></li>
+						<li><img src="../static/images/3.jpg"/></li>
+						<li><img src="../static/images/4.jpg"/></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sidebar col05">
+				<section>
+					<div class="heading">热门新闻</div>
+					<div class="content">
+						<section>
+							<img src="../static/images/thumb4.png"/>
+							<h4><a href="https://china.nba.com/a/20160123/022089_all.htm">科比81分神迹的幕后故事</a></h4>
+							<p class="content-hide">美国时间2006年1月22日，科比-布莱恩特奉献了体育史上最伟大的个人表演。以下是这场史诗比赛的幕后故事。
+								81，这个数字将和8、24一起成为科比职业生涯的象征。科比20年的职业生涯荣耀无数：5次总冠军，15次季后赛和无数个人奖项。不过在很多人眼中，10年前和猛龙的这场常规赛才是这位伟大巨星的代表作。
+								2006年1月22日，科比在湖人122-104战胜猛龙的比赛中独得81分，只有1962年维尔特-张伯伦在费城勇士队拿到的100分比他更多。
+								即使在自己的第20个赛季，81分仍然显得意义非凡。11月份给球迷的退役信中，科比就是选择自己得到81分后下场的照片，他的右手食指指向天空。 而"Channelthe Villain/Unleash the Hero" 的致敬视频中，开场镜头就是他以罚球得到第81分。</p>
+						</section>
+						<section>
+							<img src="../static/images/thumb5.png"/>
+							<h4><a href="https://nbachina.qq.com/a/20210513/004535.htm">杀手功与名 科比生涯十大经典比赛</a></h4>
+							<p class="content-hide">北京时间5月16日，湖人传奇球星科比-布莱恩特将正式入选奈史密斯篮球名人堂。长达20年的职业生涯，科比身披紫金战袍缔造了无数流芳后世的赛场表现，下面来一同回顾科比职业生涯的十大经典比赛：</p>
+						</section>
+						<section>
+							<img src="../static/images/thumb6.png"/>
+							<h4><a href="https://baijiahao.baidu.com/s?id=1623966026445331040&wfr=spider&for=pc">NBA两大纪录，被库里一场比赛全部打破</a></h4>
+							<p class="content-hide">1月29日，NBA常规赛勇士132比100大胜步行者，拿下11连胜。</p>
+						</section>
+					</div>
+				</section>
+
+				<section>
+					<div class="heading">最新发布</div>
+					<div class="content">
+						<ul class="list">
+							<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615002323&site=nbatop&column=">11分准三双守强攻弱 偏科西蒙斯难称巨头</a></li>
+							<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614005102&site=nbatop&column=">超凡表现征服对手 保罗引掘金将帅齐声夸赞</a></li>
+							<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615001996&site=nbatop&column=">杨25+18恩比德下半场仅4分 老鹰险胜76人</a></li>
+							<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614001958&site=nbatop&column=">战斗中成长 34分11板布克延续太阳风暴</a></li>
+							<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210614000717&site=&column=">字母哥34+12欧文伤退 雄鹿主场胜篮网</a></li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<div class="heading">要闻</div>
+					<div class="content">
+					<ul class="list">
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002685&site=nbatop&column=">最佳阵容名单：字母哥全票入选一阵</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002304&site=nbatop&column=">约基奇恩师德扬-米洛杰维奇将担任勇士助教</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210616002226&site=nbatop&column=">哈登天王山出战概率提升 赛前决定是否复出</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615003204&site=nbatop&column=">恩比德：今晚状态不好 膝盖痊愈要等休赛期</a></li>
+						<li><a href="https://nbachina.qq.com/article/index.htm?articleId=20210615002866&site=nbatop&column=">7连20+稳定输出 末节成看客托哈需要机会</a></li>
+					</ul>
+					</div>
+				</section>
+				<section>
+					<div class="heading">关于我们</div>
+					<div class="content">
+						软件工程18班 <a href="/">about us</a>
+						<p>CB18130803 林敬杰</p>
+						<p>CB18130849 林树灏</p>
+						<p>CB18130808 周祖杰</p>
+					</div>
+				</section>
+			</div>
+		
+			<div class="main-content col11">
+				
+				<article>
+					<div class="heading" >
+						<a th:href="@{/search/}+${news31.getId()}"><h2 th:text="${news31.getTitle()}"></h2></a>
+						<p class="info">
+							时间：<span th:text="${news31.getTime()}"></span>&nbsp;&nbsp;
+							作者：<span th:text="${news31.getAuthor()}"></span>&nbsp;&nbsp;
+							类型：<span th:text="${news31.getType()}"></span>
+						</p>
+					</div>
+					<div class="content imgw">
+						<img src="../static/images/thumb1.png"/>
+						<p class="yichu" th:text="${news31.getContent()}"></p>
+					</div>
+					<!--<div class="footer">
+						<p class="more"><a class="button" th:href="@{/search/}+${news31.getId()}">更多 >></a></p>
+					</div>-->
+				</article>
+				<article>
+					<div class="heading">
+						<a th:href="@{/search/}+${news28.getId()}"><h2 th:text="${news28.getTitle()}"></h2></a>
+						<p class="info">
+							时间：<span th:text="${news28.getTime()}"></span>&nbsp;&nbsp;
+							作者：<span th:text="${news28.getAuthor()}"></span>&nbsp;&nbsp;
+							类型：<span th:text="${news28.getType()}"></span>
+						</p>
+					</div>
+					<div class="content">
+						<img src="../static/images/thumb2.png" style="width: 170px;"/>
+						<p class="yichu" th:text="${news28.getContent()}"></p>
+					</div>
+					<!--<div class="footer">
+						<a class="button" th:href="@{/search/}+${news28.getId()}">更多 >></a></p>
+					</div>-->
+				</article>
+				<article>
+					<div class="heading">
+						<a th:href="@{/search/}+${news3.getId()}"><h2 th:text="${news3.getTitle()}"></h2></a>
+						<p class="info">
+							时间：<span th:text="${news3.getTime()}"></span>&nbsp;&nbsp;
+							作者：<span th:text="${news3.getAuthor()}"></span>&nbsp;&nbsp;
+							类型：<span th:text="${news3.getType()}"></span>
+						</p>
+					</div>
+					<div class="content">
+						<img src="../static/images/KD.png" style="width: 170px;"/>
+						<p class="yichu" th:text="${news3.getContent()}"></p>
+					</div>
+					<!--<div class="footer">
+						<a class="button" th:href="@{/search/}+${news32.getId()}">更多 >></a></p>
+					</div>-->
+				</article>
+				<article>
+					<div class="heading">
+						<h2><a href="https://www.163.com/dy/article/EFMTED7S0529986B.html">库里创NBA73年最伟大纪录</a></h2>
+						<p class="info">时间：Tue Jun 18 20:48:13 CST 2021   作者：林敬杰   类型：</p>
+					</div>
+					<div class="content">
+						<img src="../static/images/thumb3.png"/>
+						<p class="yichu">119:117，在今天最新结束的NBA季后赛西部决赛当中，勇士队最终通过加时赛击败了开拓者队，实现了4:0横扫开拓者队，成功的晋级到总决赛当中。这样一来勇士队也就实现了连续5个赛季打进总决赛，勇士王朝可谓是实至名归，而在季后赛当中，勇士队对阵开拓者队已经取得了10连胜的成绩。本场比赛勇士队当家球星库里25投11中，三分球16投7中，砍下了37分12个篮板11次助攻，拿下了劲爆的三双，而勇士队另外一位当家巨星格林13投7中，也拿下了18分14个篮板和11次助攻3个抢断，同样是收获了三双。</p>
+					</div>
+					<!--<div class="footer">
+						<p class="more"><a class="button" href="#">更多 >></a></p>
+					</div>-->
+				</article>
+			</div>
+			
+		</div>
+	</div>
+</section>
+<!--------------Footer--------------->
+<footer>
+	<div class="zerogrid">
+		<div class="row">
+			<section class="col-1-3">
+				<div class="heading">联系方式</div>
+				<div class="content">
+					<p>邮箱： <a href="https://mail.qq.com/">8888888@qq.com</a></p>
+					<p>地址：广东省东莞市石排镇广东科技学院</p>
+					<p>电话：+83 2440053050</p>
+				</div>
+			</section>
+			<section class="col-1-3">
+				<div class="heading">友情链接</div>
+				<div class="content">
+					<ul>
+						<li><a href="http://www.baidu.com">百度一下，你就知道</a></li>
+						<li><a href="https://nba.hupu.com/">NBA|虎扑篮球</a></li>
+						<li><a href="https://www.bilibili.com/">哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></li>
+						<li><a href="http://nball.cc/">JRS直播_JRS_低调看直播_NBA直播 - nball</a></li>
+						<li><a href="https://sports.sina.com.cn/">新浪体育_新浪网</a></li>
+					</ul>
+				</div>
+			</section>
+			<section class="col-1-3">
+				<div class="heading">热门球队</div>
+				<div class="content">
+					<table border="0px">
+						<tr>
+							<td><img src="../static/images/huren.png"/></td>
+							<td><img src="../static/images/qishi.png"/></td>
+							<td><img src="../static/images/yonshi.png"/></td>
+						</tr>
+						<tr>
+							<td><img src="../static/images/moshu.png"/></td>
+							<td><img src="../static/images/mia.png"/></td>
+							<td><img src="../static/images/phx.png"/></td>
+						</tr>
+					</table>
+				</div>
+			</section>
+		</div>
+	</div>
+</footer>
+
+<div id="copyright">
+	<p><a>第十三组 林敬杰 林树灏 周祖杰</a></p>
+</div>
+
+</body></html>

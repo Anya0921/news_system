@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="#">首页</a></li>
+                <li><a th:href="@{/}">网站首页</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#">管理员</a></li>
+                <li><a href="#">修改密码</a></li>
+                <li><a th:href="@{/page/newslogin.html}">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1 style="margin-left: 18px;">菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <ul class="sub-menu">
+                        <li><a th:href="@{/admin/select}">查询新闻</a></li>
+                        <li><a th:href="@{/admin/insert}">增加新闻</a></li>
+<!--                        <li><a th:href="@{/admin/update}">修改新闻</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a th:href="@{/admin/select}">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">新增新闻</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/add" enctype="multipart/form-data" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>分类：</th>
+                            <td>
+                                <input class="common-text required" name="type" size="50" type="text">
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>标题：</th>
+                                <td>
+                                    <input class="common-text required" name="title" size="50" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>作者：</th>
+                                <td><input class="common-text" name="author" size="50" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>时间：</th>
+<!--                                <td><input name="smallimg" id="" type="file">&lt;!&ndash;<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>&ndash;&gt;</td>-->
+                                <td><input class="common-text" name="time" size="50" type="date"></td>
+                            </tr>
+                            <tr>
+                                <th>内容：</th>
+                                <td><textarea name="content" class="common-textarea" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onClick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
